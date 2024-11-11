@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  nestjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mytonswap_app
+    ports:
+      - ${PORT}:80
+    env_file:
+      - .env
+    networks:
+      - mytonswap_network
+
+networks:
+  mytonswap_network:
+    external: true
