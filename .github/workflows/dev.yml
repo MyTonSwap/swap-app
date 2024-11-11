@@ -17,7 +17,7 @@ jobs:
 
       - name: Run tests inside Docker container
         run: |
-          docker run my-nestjs-app:test npm test
+          docker run my-nestjs-app:test pnpm test
 
   deploy:
     runs-on: ubuntu-latest
