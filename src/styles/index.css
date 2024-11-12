@@ -8,6 +8,8 @@
     --border-color: #f4f4f5;
     --primary-color: #22c55e;
     --background-color: #ffffff;
+    --swap-container-background: #f4f4f500;
+    --swap-container-border-color: #ffffff00;
     --input-card-color: #ffffff;
     --input-token-color: #f4f4f5;
     --light-shade-color: #f4f4f5;
@@ -22,6 +24,8 @@
 .dark:root {
     --border-color: #1d2939;
     --primary-color: #16a34a;
+    --swap-container-background: #f4f4f500;
+    --swap-container-border-color: #ffffff00;
     --background-color: #101828;
     --input-card-color: #344054;
     --input-token-color: #101828;
