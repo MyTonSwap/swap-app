@@ -9,7 +9,8 @@
         "lint": "eslint .",
         "preview": "vite preview",
         "test": "cypress run",
-        "cypress:open": "cypress open"
+        "cypress:open": "cypress open",
+        "cypress:run": "cypress run"
     },
     "dependencies": {
         "@mytonswap/widget": "^2.0.9",
