@@ -25,7 +25,7 @@ jobs:
               run: |
                   npx concurrently -k -s first -n "APP,TEST" -c "magenta,blue" \
                     "npx http-server dist --port 5173 --silent" \
-                    "npx wait-on tcp:6006 && pnpm cypress:run"
+                    "npx wait-on tcp:5173 && pnpm cypress:run"
 
     deploy:
         runs-on: ubuntu-latest
