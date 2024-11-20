@@ -27,6 +27,9 @@ export default {
                     900: "#030508",
                 },
             },
+            gridTemplateColumns: {
+                footer: "350px 1fr 1fr 1fr",
+            },
         },
     },
     plugins: [],

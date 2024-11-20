@@ -30,7 +30,7 @@ const Navbar = () => {
     return (
         <div
             dir={direction}
-            className="border-b-[1px] border-black/10 dark:border-white/10"
+            className="border-b-[1px] border-black/10 dark:border-white/10 bg-black py-2"
         >
             <nav className="max-w-screen-lg h-16 flex items-center justify-between mx-auto  px-4">
                 <ul className=" dark:text-white flex items-center h-full">
