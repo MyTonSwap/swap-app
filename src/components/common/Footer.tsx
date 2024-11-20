@@ -31,24 +31,11 @@ const Footer = () => {
                                 className="w-24"
                             />
                         </a>
-                        <div className="flex items-center gap-x-4 text-xl mt-8">
-                            {socials.map(({ icon, link, name }) => (
-                                <a
-                                    key={name}
-                                    href={link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center transition-all dark:text-white/50 text-black/50 dark:hover:text-green-600 hover:text-green-500"
-                                >
-                                    {icon}
-                                </a>
-                            ))}
-                        </div>
                     </div>
                 </div>
                 {footer_links.map(({ category_name, links }) => {
                     return (
-                        <div>
+                        <div className="mt-8 md:mt-0">
                             <h1 className="font-semibold">{category_name}</h1>
                             <div className="flex flex-col opacity-50 gap-y-2 mt-2">
                                 {links.map((item) => (
@@ -61,8 +48,23 @@ const Footer = () => {
                     );
                 })}
             </div>
-            <hr className="my-8 opacity-30" />
             <div>
+                <div className="flex items-center gap-x-4 text-xl mt-8 mx-4">
+                    {socials.map(({ icon, link, name }) => (
+                        <a
+                            key={name}
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center transition-all dark:text-white/50 text-black/50 dark:hover:text-green-600 hover:text-green-500"
+                        >
+                            {icon}
+                        </a>
+                    ))}
+                </div>
+            </div>
+            <hr className="my-8 opacity-30" />
+            <div className="px-4">
                 <p className="text-justify text-sm opacity-70">
                     Disclaimer: Nothing on this site is investment advice. All
                     information is for informational purposes only. You should
@@ -78,7 +80,7 @@ const Footer = () => {
                 </p>
             </div>
             <hr className="my-8 opacity-30" />
-            <div className="text-sm opacity-70 grid grid-cols-2">
+            <div className="text-sm opacity-70 grid grid-cols-2 mx-4">
                 <div>
                     <p>Based on TON</p>
                 </div>
