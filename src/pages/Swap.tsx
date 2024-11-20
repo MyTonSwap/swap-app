@@ -1,9 +1,10 @@
 import { useTonConnectUI } from "@tonconnect/ui-react";
-import Navbar from "../components/common/Navbar";
+import Navbar from "@/components/common/Navbar";
 import { createSwap } from "@mytonswap/widget";
 import { useEffect, useRef } from "react";
 import { TON_CONNECT_APP_ID, TON_CONNECT_UI_PREFERENCES } from "../constants";
 import { useQueryState } from "nuqs";
+import Footer from "@/components/common/Footer";
 const Swap = () => {
     const [tc] = useTonConnectUI();
     const initMount = useRef(false);
@@ -31,9 +32,10 @@ const Swap = () => {
             data-testid="app-bg"
         >
             <Navbar />
-            <div className="items-center w-fit mx-auto mt-5">
+            <div className="items-center w-fit mx-auto mt-5 min-h-[calc(100dvh-81px)]">
                 <div id="swap-widget"></div>
             </div>
+            <Footer />
         </div>
     );
 };
