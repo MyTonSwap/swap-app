@@ -95,7 +95,7 @@ describe("template spec", () => {
         cy.get("[data-testid='app-bg']").should(
             "have.css",
             "background-color",
-            "rgb(16, 24, 40)"
+            "rgb(9, 9, 11)"
         );
     });
 });
