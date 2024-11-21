@@ -13,7 +13,7 @@
         "cypress:run": "cypress run"
     },
     "dependencies": {
-        "@mytonswap/widget": "^2.0.14",
+        "@mytonswap/widget": "^2.0.15",
         "@tonconnect/ui-react": "^2.0.9",
         "clsx": "^2.1.1",
         "framer-motion": "^11.11.11",
