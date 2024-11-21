@@ -28,21 +28,21 @@
 }
 
 .dark:root {
-    --border-color: #344054;
-    --primary-color: #16a34a;
-    --secondary-color: #283241;
-    --background-color: #101828;
-    --modal-background-color: #1d2939;
-    --swap-container-background-color: #101828;
+    --border-color: #2b2b30;
+    --primary-color: #008f11;
+    --secondary-color: #28282c;
+    --background-color: #09090b;
+    --modal-background-color: #111314;
+    --swap-container-background-color: rgba(0, 0, 0, 0);
     --swap-container-border-color: #1d293900;
     --input-card-pay-color: #09090b;
-    --input-card-receive-color: #344054;
-    --input-card-color: #101828;
-    --input-token-color: #101828;
-    --change-direction-background-color: #101828;
-    --change-direction-icon-color: #16a34a;
-    --light-shade-color: #1d2939;
-    --slippage-box-color: #344054;
+    --input-card-receive-color: #09090b;
+    --input-card-color: #111314;
+    --input-token-color: #18181b85;
+    --change-direction-background-color: #008f11;
+    --change-direction-icon-color: #ffffff;
+    --light-shade-color: #18181b7c;
+    --slippage-box-color: #27272a;
     --text-black-color: #ffffff;
     --text-white-color: #ffffff;
     --text-fade-color: #687085;
@@ -50,8 +50,15 @@
     --price-impact-color: #e64646;
 }
 
+html {
+    overflow-x: hidden;
+    /* overscroll-behavior: none; */
+    background-color: #000000;
+}
+
 body {
     font-family: "Plus Jakarta Sans", sans-serif;
+    overflow-x: hidden;
 }
 
 @keyframes slideIn {

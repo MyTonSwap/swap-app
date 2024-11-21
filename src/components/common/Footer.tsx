@@ -1,6 +1,7 @@
 import Logo from "@/assets/logo.png";
 import { footer_links } from "@/constants/links";
 import { socials } from "@/constants/socials";
+import ThemeToggle from "./ThemeToggle";
 
 const Footer = () => {
     return (
@@ -48,8 +49,8 @@ const Footer = () => {
                     );
                 })}
             </div>
-            <div>
-                <div className="flex items-center gap-x-4 text-xl mt-8 mx-4">
+            <div className="flex items-center justify-between mx-4">
+                <div className="flex items-center gap-x-4 text-xl mt-8">
                     {socials.map(({ icon, link, name }) => (
                         <a
                             key={name}
@@ -61,6 +62,9 @@ const Footer = () => {
                             {icon}
                         </a>
                     ))}
+                </div>
+                <div className="mt-8">
+                    <ThemeToggle />
                 </div>
             </div>
             <hr className="my-8 opacity-30" />

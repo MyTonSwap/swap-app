@@ -28,12 +28,15 @@ const Swap = () => {
     }, [lang, tc]);
     return (
         <div
-            className="bg-white dark:bg-background-500 min-h-screen w-full"
+            className="bg-white dark:bg-zinc-950 min-h-screen w-full overflow-hidden relative"
             data-testid="app-bg"
         >
             <Navbar />
-            <div className="items-center w-fit mx-auto mt-5 min-h-[calc(100dvh-81px)]">
-                <div id="swap-widget"></div>
+            <div className="dark:bg-green-600 w-64 h-64 absolute right-[-100px] blur-[200px] opacity-30 top-[200px]"></div>
+
+            <div className="dark:bg-green-600 w-64 h-64 absolute left-[-100px] blur-[200px] opacity-30 top-[400px]"></div>
+            <div className="items-center w-fit mx-auto mt-5 min-h-[calc(100dvh-81px)] ">
+                <div className="md:mt-12" id="swap-widget"></div>
             </div>
             <Footer />
         </div>
