@@ -10,7 +10,7 @@
         "preview": "vite preview",
         "test": "cypress run",
         "cypress:open": "cypress open",
-        "cypress:run": "cypress run"
+        "cypress:run": "cypress run --browser chrome"
     },
     "dependencies": {
         "@mytonswap/sdk": "^1.0.12",
