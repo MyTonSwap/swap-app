@@ -1,14 +1,38 @@
-import { useTonConnectUI } from "@tonconnect/ui-react";
+import { useTonConnectUI, useTonWallet } from "@tonconnect/ui-react";
 import Navbar from "@/components/common/Navbar";
 import { createSwap } from "@mytonswap/widget";
 import { useEffect, useRef } from "react";
 import { TON_CONNECT_APP_ID, TON_CONNECT_UI_PREFERENCES } from "../constants";
 import { useQueryState } from "nuqs";
 import Footer from "@/components/common/Footer";
+import { walletConnect } from "@/services/analytics/wallet-connect";
+import { v4 } from "uuid";
+import { View } from "@/services/analytics/view";
+import { sendTransaction } from "@/services/analytics/sendTransaction";
 const Swap = () => {
     const [tc] = useTonConnectUI();
     const initMount = useRef(false);
     const [lang] = useQueryState("lang");
+
+    const wallet = useTonWallet();
+    useEffect(() => {
+        if (wallet) {
+            walletConnect(
+                wallet.account.address,
+                wallet.device.appVersion,
+                wallet.device.appName
+            );
+        }
+    }, [wallet]);
+
+    useEffect(() => {
+        const stats_id = localStorage.getItem("stats_id");
+        if (!stats_id) {
+            const new_stats_id = v4();
+            localStorage.setItem("stats_id", new_stats_id);
+        }
+        View();
+    }, []);
 
     useEffect(() => {
         if (tc) {
@@ -22,6 +46,19 @@ const Swap = () => {
                     app_id: TON_CONNECT_APP_ID,
                     ui_preferences: TON_CONNECT_UI_PREFERENCES,
                 },
+                onSwap({ type, data }) {
+                    sendTransaction(
+                        data.pay.address,
+                        data.receive.address,
+                        data.pay.symbol,
+                        data.receive.symbol,
+                        +data.receive_amount,
+                        wallet!.account.address,
+                        data.hash,
+                        type,
+                        data.receive_rate
+                    );
+                },
                 locale: lang || "en",
             });
         }
@@ -32,9 +69,9 @@ const Swap = () => {
             data-testid="app-bg"
         >
             <Navbar />
-            <div className="dark:bg-green-600 w-64 h-64 absolute right-[-100px] blur-[200px] opacity-30 top-[200px]"></div>
+            <div className="dark:bg-green-600 w-64 h-64 absolute right-[-100px] blur-[200px] opacity-60  top-[200px]"></div>
 
-            <div className="dark:bg-green-600 w-64 h-64 absolute left-[-100px] blur-[200px] opacity-30 top-[400px]"></div>
+            <div className="dark:bg-green-600 w-64 h-64 absolute left-[-100px] blur-[200px] opacity-60  top-[400px]"></div>
             <div className="items-center w-fit mx-auto mt-5 min-h-[calc(100dvh-81px)] ">
                 <div className="md:mt-12" id="swap-widget"></div>
             </div>

@@ -40,7 +40,11 @@ const Footer = () => {
                             <h1 className="font-semibold">{category_name}</h1>
                             <div className="flex flex-col opacity-50 gap-y-2 mt-2">
                                 {links.map((item) => (
-                                    <a href={item.link} className="text-sm">
+                                    <a
+                                        href={item.link}
+                                        key={item.link}
+                                        className="text-sm"
+                                    >
                                         {item.name}
                                     </a>
                                 ))}
