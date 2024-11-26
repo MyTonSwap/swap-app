@@ -36,13 +36,13 @@ const Footer = () => {
                 </div>
                 {footer_links.map(({ category_name, links }) => {
                     return (
-                        <div className="mt-8 md:mt-0">
+                        <div key={category_name} className="mt-8 md:mt-0">
                             <h1 className="font-semibold">{category_name}</h1>
                             <div className="flex flex-col opacity-50 gap-y-2 mt-2">
-                                {links.map((item) => (
+                                {links.map((item, idx) => (
                                     <a
                                         href={item.link}
-                                        key={item.link}
+                                        key={item.link + idx}
                                         className="text-sm"
                                     >
                                         {item.name}
