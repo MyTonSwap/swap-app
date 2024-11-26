@@ -16,6 +16,9 @@ jobs:
                   node-version: "20.x"
             - name: Install pnpm
               run: npm install -g pnpm
+            - name: Set env
+              env:
+                  VITE_BASE_URL_API: ${{ secrets.VITE_BASE_URL_API }}
             - run: pnpm install
             - name: Install Cypress
               run: pnpx cypress install
