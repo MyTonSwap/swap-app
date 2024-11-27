@@ -4,14 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { createWalletProfile } from "@mytonswap/widget";
 import { FiMenu } from "react-icons/fi";
 import { IoClose, IoLanguage } from "react-icons/io5";
-import { useTheme } from "../../stores/theme";
-import { cn } from "../../styles/utils";
-import Moon from "../../assets/icons/moon";
-import Sun from "../../assets/icons/sun";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMediaQuery, useOnClickOutside } from "usehooks-ts";
 import { langs } from "../../constants";
 import { useTranslation } from "react-i18next";
+import ThemeToggle from "./ThemeToggle";
 
 const setLanguage = (lang: string) => {
     const parsedLang = new URL(location.href);
@@ -30,13 +27,13 @@ const Navbar = () => {
     return (
         <div
             dir={direction}
-            className="border-b-[1px] border-black/10 dark:border-white/10"
+            className="border-b-[1px] border-black/10 dark:border-white/10 dark:bg-zinc-950 py-2"
         >
             <nav className="max-w-screen-lg h-16 flex items-center justify-between mx-auto  px-4">
                 <ul className=" dark:text-white flex items-center h-full">
                     <li className="flex items-center px-2">
                         <Link
-                            to="/"
+                            to="https://mytonswap.com"
                             className="flex items-center font-black relative z-30"
                         >
                             <img
@@ -69,22 +66,10 @@ const Navbar = () => {
                     </li>
                 </ul>
                 <div className="max-w-screen-md dark:text-white flex items-center h-full gap-2">
-                    {isDesktop && (
-                        <div className="hidden md:block">
-                            <LangPopover />
-                        </div>
-                    )}
-                    {isDesktop && (
-                        <div className="hidden md:block">
-                            <ThemeToggle />
-                        </div>
-                    )}
                     <ConnectButton />
-                    {!isDesktop && (
-                        <div className="z-30 md:hidden">
-                            <LangPopover />
-                        </div>
-                    )}
+                    <div className="z-30">
+                        <LangPopover />
+                    </div>
                     {mobileMenu ? (
                         <IoClose
                             data-testid="mobile-menu-button-close"
@@ -180,35 +165,6 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
     );
 };
 
-const ThemeToggle = () => {
-    const { theme, changeTheme } = useTheme();
-    return (
-        <div
-            data-testid="theme-toggle"
-            onClick={() => {
-                changeTheme(theme === "dark" ? "light" : "dark");
-            }}
-            className={cn(
-                "relative flex cursor-pointer gap-3 rounded-full bg-[#d0d5dd] p-3 transition-all duration-300",
-                theme === "dark" && "bg-[#162136]"
-            )}
-            style={{
-                direction: "ltr",
-            }}
-        >
-            <div
-                className={cn(
-                    "absolute top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-[#475467] transition-all",
-                    theme === "dark" ? "left-2" : "left-11"
-                )}
-            ></div>
-            <Moon isDark={theme === "dark"} className="relative z-10" />
-
-            <Sun isDark={theme === "dark"} className="relative z-10" />
-        </div>
-    );
-};
-
 const LangPopover = () => {
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const popoverRef = useRef(null);
@@ -239,13 +195,13 @@ const LangPopover = () => {
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className="absolute top-8 rtl:left-0 ltr:right-0 bg-white shadow-sm dark:bg-background-600 border-[1px] border-black/10 dark:border-white/10  rounded-xl min-w-[200px] p-2 z-10"
+                        className="absolute top-8 rtl:left-0 ltr:right-0 bg-white shadow-sm dark:bg-zinc-900 border-[1px] border-black/10 dark:border-white/10  rounded-xl min-w-[200px] p-2 z-10"
                     >
                         {langs.map((lang) => (
                             <div
                                 key={lang.value}
                                 data-testid={`lang-${lang.value}`}
-                                className="flex items-center gap-2 cursor-pointer hover:bg-zinc-100 dark:hover:bg-background-500 p-1 px-2 transition-all duration-200 rounded-md "
+                                className="flex items-center gap-2 cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800 p-1 px-2 transition-all duration-200 rounded-md "
                                 onClick={() => setLanguage(lang.value)}
                             >
                                 <span>{lang.label}</span>
