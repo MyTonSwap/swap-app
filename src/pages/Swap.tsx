@@ -9,10 +9,14 @@ import { walletConnect } from "@/services/analytics/wallet-connect";
 import { v4 } from "uuid";
 import { View } from "@/services/analytics/view";
 import { sendTransaction } from "@/services/analytics/sendTransaction";
+import { toNano } from "@mytonswap/sdk";
 const Swap = () => {
     const [tc] = useTonConnectUI();
     const initMount = useRef(false);
     const [lang] = useQueryState("lang");
+    const [payt, setPayt] = useQueryState("payt");
+    const [recvt, setRecvt] = useQueryState("recvt");
+    const [amount] = useQueryState("amount");
 
     const wallet = useTonWallet();
     useEffect(() => {
@@ -45,6 +49,10 @@ const Swap = () => {
                 options: {
                     app_id: TON_CONNECT_APP_ID,
                     ui_preferences: TON_CONNECT_UI_PREFERENCES,
+                    default_pay_token: payt || "TON",
+                    default_receive_token: recvt || undefined,
+                    default_pay_amount:
+                        toNano(amount ?? 0).toString() || undefined,
                 },
                 onSwap({ type, data }) {
                     sendTransaction(
@@ -58,6 +66,13 @@ const Swap = () => {
                         type,
                         data.receive_rate
                     );
+                },
+                onTokenSelect({ asset, type }) {
+                    if (type === "pay") {
+                        setPayt(asset.symbol);
+                    } else {
+                        setRecvt(asset.symbol);
+                    }
                 },
                 locale: lang || "en",
             });
