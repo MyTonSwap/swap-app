@@ -14,7 +14,7 @@
     },
     "dependencies": {
         "@mytonswap/sdk": "^1.0.12",
-        "@mytonswap/widget": "^2.0.22",
+        "@mytonswap/widget": "^2.0.24",
         "@tonconnect/ui-react": "^2.0.9",
         "axios": "^1.7.8",
         "clsx": "^2.1.1",
