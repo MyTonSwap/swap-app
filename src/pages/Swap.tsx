@@ -61,7 +61,7 @@ const Swap = () => {
                         data.pay.symbol,
                         data.receive.symbol,
                         +data.receive_amount,
-                        wallet!.account.address,
+                        wallet?.account.address || "",
                         data.hash,
                         type,
                         data.receive_rate
