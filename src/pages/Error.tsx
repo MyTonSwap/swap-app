@@ -3,7 +3,10 @@ import { IoReload } from "react-icons/io5";
 const Error = () => {
     return (
         <div className="flex items-center justify-center gap-y-2 px-4 text-center font-mono flex-col h-screen text-white">
-            <img src="/images/pensive-face.gif" className="w-14 h-14 mb-2" />
+            <img
+                src="/images/police-car-light.gif"
+                className="w-14 h-14 mb-2"
+            />
             <h1 className="text-xl font-extrabold">
                 Oops! Something went wrong.
             </h1>
