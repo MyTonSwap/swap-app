@@ -17,6 +17,9 @@ importers:
       '@tonconnect/ui-react':
         specifier: ^2.0.9
         version: 2.0.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@twa-dev/sdk':
+        specifier: ^8.0.1
+        version: 8.0.1(react@18.3.1)
       axios:
         specifier: ^1.7.8
         version: 1.7.8
@@ -781,6 +784,14 @@ packages:
 
   '@tonconnect/ui@2.0.9':
     resolution: {integrity: sha512-ZxofTBf81NqrxyD0ybI8AuFHN11uKVg/00xTDFhP5FoPB8rYC7En9qE2VJ6IvwvtTpmh8jspi2ancOHUMBoCQA==}
+
+  '@twa-dev/sdk@8.0.1':
+    resolution: {integrity: sha512-mBR5dnAvSyRx7YGt/n0Owq1z8MsWhsuh76JD1abV0TZWHi6RQSPXBNAG0XMOMO7Vf5hsAwUTul+x54vf43Ku0A==}
+    peerDependencies:
+      react: ^18.3.1
+
+  '@twa-dev/types@8.0.1':
+    resolution: {integrity: sha512-/m3KiULhI4fdeoI5K9Op9jFbmdPjxaAdrZBJ3BA1fS4lVmKCx9XuLTeumzYeuOW577eHAJWaZkcSpWBOss4Epw==}
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
@@ -3427,6 +3438,13 @@ snapshots:
       ua-parser-js: 1.0.39
     transitivePeerDependencies:
       - encoding
+
+  '@twa-dev/sdk@8.0.1(react@18.3.1)':
+    dependencies:
+      '@twa-dev/types': 8.0.1
+      react: 18.3.1
+
+  '@twa-dev/types@8.0.1': {}
 
   '@types/estree@1.0.6': {}
 

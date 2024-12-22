@@ -1,5 +1,5 @@
 import { create } from "zustand";
-
+import WebApp from "@twa-dev/sdk";
 type ITheme = {
     theme: "light" | "dark";
     changeTheme: (theme: "light" | "dark") => void;
@@ -7,8 +7,10 @@ type ITheme = {
 
 export const useTheme = create<ITheme>()((set) => ({
     theme: (() => {
-        const theme =
-            (localStorage.getItem("theme") as "dark" | "light") || "dark";
+        const isTelegramMiniApp = WebApp.platform !== "unknown";
+        const theme = isTelegramMiniApp
+            ? WebApp.colorScheme
+            : (localStorage.getItem("theme") as "dark" | "light") || "dark";
         document.documentElement.classList.add(theme);
         return theme;
     })(),
